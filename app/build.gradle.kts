@@ -4,6 +4,8 @@ import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -12,8 +14,12 @@ android {
 
 
     defaultConfig {
-        val key: String = gradleLocalProperties(rootDir).getProperty("API_KEY") ?: ""
-        buildConfigField("String", "API_KEY", "\"$key\"")
+        val API_KEY: String = gradleLocalProperties(rootDir).getProperty("API_KEY") ?: ""
+        buildConfigField("String", "API_KEY", "\"$API_KEY\"")
+
+        val Base_Url: String = gradleLocalProperties(rootDir).getProperty("Base_Url") ?: ""
+        buildConfigField("String", "Base_Url", "\"$Base_Url\"")
+
         android.buildFeatures.buildConfig=true
 
         applicationId = "ir.atefehtaheri.weatherforecasts"
@@ -76,4 +82,17 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+
+
+
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+
+    //Dagger - Hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 }
