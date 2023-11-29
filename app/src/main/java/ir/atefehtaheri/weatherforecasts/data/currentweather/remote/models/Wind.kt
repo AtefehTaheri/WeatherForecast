@@ -1,7 +1,6 @@
-package ir.atefehtaheri.weatherforecasts.data.CurrentWeather.remote.models
+package ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models
 
 data class Wind(
     val deg: Int,
-    val gust: Double,
     val speed: Double
 )
