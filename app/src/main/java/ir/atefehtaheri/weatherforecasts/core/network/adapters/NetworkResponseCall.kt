@@ -2,7 +2,7 @@ package ir.atefehtaheri.weatherforecasts.core.network.adapters
 
 import ir.atefehtaheri.weatherforecasts.core.network.NetworkResponse
 import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.CurrentWeatherDto
-//import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.ErrorResponse
+//import ir.atefehtaheri.weatherforecasts.core.network.ErrorResponse
 import okhttp3.Request
 import okhttp3.ResponseBody
 import okio.Timeout

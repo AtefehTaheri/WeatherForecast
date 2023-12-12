@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "ir.atefehtaheri.weatherforecasts"
-    compileSdk = 33
+    compileSdk = 34
 
 
     defaultConfig {
@@ -24,7 +24,7 @@ android {
 
         applicationId = "ir.atefehtaheri.weatherforecasts"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -105,7 +105,16 @@ dependencies {
 
 
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+//    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.1"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
 
+    // Paging
+//    implementation("androidx.paging:paging-runtime:3.2.1")
+//    implementation("androidx.paging:paging-compose:3.3.0-alpha02")
 
+    //Room
+    implementation("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+//    implementation("androidx.room:room-paging:2.6.1")
 }
