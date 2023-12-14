@@ -8,6 +8,7 @@ import ir.atefehtaheri.weatherforecasts.core.network.di.createApiService
 import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote.api.WeatherForecastApi
 import retrofit2.Retrofit
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 object WeatherForecastApiModule {
@@ -16,4 +17,5 @@ object WeatherForecastApiModule {
     fun getHourlyForecastApiModule(retrofit: Retrofit): WeatherForecastApi {
         return createApiService(WeatherForecastApi::class.java, retrofit)
     }
+
 }
