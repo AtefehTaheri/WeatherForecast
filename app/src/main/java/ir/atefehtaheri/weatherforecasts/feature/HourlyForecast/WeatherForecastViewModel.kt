@@ -22,14 +22,16 @@ class WeatherForecastViewModel @Inject constructor(
 
 
     fun loadWeatherForecast(city: String) = viewModelScope.launch {
+
         when (val result = WeatherForecastRepository.getListWeatherForecast(city)) {
-            is ResultStatus.Failure -> _WeatherForecastState.value =
-                _WeatherForecastState.value.copy(error = result.exception_message)
-
-            is ResultStatus.Success -> _WeatherForecastState.value =
+            is ResultStatus.Failure -> {
+                _WeatherForecastState.value =
+                    _WeatherForecastState.value.copy(error = result.exception_message)
+            }
+            is ResultStatus.Success -> {
+                _WeatherForecastState.value =
                 _WeatherForecastState.value.copy(ListWeatherForecastDataModel = result.data)
-        }
-
+        }}
 
     }
 

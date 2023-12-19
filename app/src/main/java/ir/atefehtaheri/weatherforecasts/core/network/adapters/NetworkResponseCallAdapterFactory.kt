@@ -39,7 +39,7 @@ class NetworkResponseCallAdapterFactory:CallAdapter.Factory() {
             retrofit.nextResponseBodyConverter<Any>(null, errorType, annotations)
 
         return NetworkResponseCallAdapter<Any, Any>(successType, errorBodyConverter)
-    }
+}
 
     companion object {
         /**

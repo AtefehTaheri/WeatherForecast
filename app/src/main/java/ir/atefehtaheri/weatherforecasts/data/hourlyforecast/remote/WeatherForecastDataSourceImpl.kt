@@ -3,13 +3,14 @@ package ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote
 import ir.atefehtaheri.weatherforecasts.core.common.models.ResultStatus
 import ir.atefehtaheri.weatherforecasts.core.network.NetworkResponse
 import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote.api.WeatherForecastApi
-import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote.model.WeatherForecast
+import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote.model.Item
 import javax.inject.Inject
 
 class WeatherForecastDataSourceImpl @Inject constructor(
     private val WeatherForecastApi: WeatherForecastApi
 ) :WeatherForecastDataSource {
-    override suspend fun getHourlyForecast(city: String): ResultStatus<WeatherForecast> {
+    override suspend fun getHourlyForecast(city: String): ResultStatus<List<Item>> {
+
         return when(val result =WeatherForecastApi.getForecast(city)){
             is NetworkResponse.Success -> ResultStatus.Success(result.body)
             is NetworkResponse.ApiError -> ResultStatus.Failure(result.body.message)

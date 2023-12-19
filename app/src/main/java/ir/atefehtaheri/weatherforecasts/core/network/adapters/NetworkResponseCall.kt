@@ -1,5 +1,6 @@
 package ir.atefehtaheri.weatherforecasts.core.network.adapters
 
+import android.util.Log
 import ir.atefehtaheri.weatherforecasts.core.network.NetworkResponse
 import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.CurrentWeatherDto
 //import ir.atefehtaheri.weatherforecasts.core.network.ErrorResponse
@@ -29,9 +30,10 @@ internal class NetworkResponseCall<S : Any, E : Any>(
 
     override fun cancel() = delegate.cancel()
 
-    override fun isCanceled(): Boolean =delegate.isCanceled
+    override fun isCanceled(): Boolean = delegate.isCanceled
 
-    override fun request(): Request =delegate.request()
+    override fun request(): Request = delegate.request()
+
 
     override fun timeout(): Timeout {
         TODO("Not yet implemented")
@@ -41,8 +43,9 @@ internal class NetworkResponseCall<S : Any, E : Any>(
         delegate.enqueue(object : Callback<S> {
             override fun onResponse(call: Call<S>, response: Response<S>) {
                 if (response.isSuccessful) {
-                    val networkresponse=NetworkResponse.Success(response.body(),response.headers())
-                    callback.onResponse(this@NetworkResponseCall,Response.success(networkresponse))
+                    val networkresponse =
+                        NetworkResponse.Success(response.body(), response.headers())
+                    callback.onResponse(this@NetworkResponseCall, Response.success(networkresponse))
                 } else {
                     val errorBody = response.errorBody()
                     val code = response.code()
@@ -67,12 +70,12 @@ internal class NetworkResponseCall<S : Any, E : Any>(
                             this@NetworkResponseCall,
                             Response.success(NetworkResponse.UnknownError(IOException("Unknown error")))
                         )
-                }
+                    }
                 }
             }
 
             override fun onFailure(call: Call<S>, t: Throwable) {
-               val networkResponse = when (t) {
+                val networkResponse = when (t) {
                     is IOException -> NetworkResponse.NetworkError(t)
                     else -> NetworkResponse.UnknownError(t)
                 }

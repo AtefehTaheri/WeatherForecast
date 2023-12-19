@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ir.atefehtaheri.weatherforecasts.BuildConfig
 import ir.atefehtaheri.weatherforecasts.core.network.adapters.NetworkResponseCallAdapterFactory
-import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.di.CurrentWeather
+import ir.atefehtaheri.weatherforecasts.core.network.converter.WeatherForecastConverterFactory
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -45,6 +45,7 @@ fun provideRetrofit(
 ): Retrofit {
 
     return Retrofit.Builder()
+        .addConverterFactory(WeatherForecastConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(networkResponseCallAdapterFactory)
         .baseUrl(baseUrl)

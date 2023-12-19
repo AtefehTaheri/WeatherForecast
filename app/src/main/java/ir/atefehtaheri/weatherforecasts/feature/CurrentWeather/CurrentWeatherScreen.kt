@@ -1,5 +1,6 @@
 package ir.atefehtaheri.weatherforecasts.feature.CurrentWeather
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,6 +40,8 @@ fun CurrentWeatherScreen (
         Text(text = CurrentWeatherViewModel.CurrentWeatherState.value.CurrentWeatherDataModel?.description ?: "")
         Text(text = CurrentWeatherViewModel.CurrentWeatherState.value.CurrentWeatherDataModel?.location ?: "")
         Text(text = CurrentWeatherViewModel.CurrentWeatherState.value.CurrentWeatherDataModel?.let{it.temp.toString()} ?: ""  )
+        Text(text = CurrentWeatherViewModel.CurrentWeatherState.value.error ?: "qqq")
+
     }
 
 }

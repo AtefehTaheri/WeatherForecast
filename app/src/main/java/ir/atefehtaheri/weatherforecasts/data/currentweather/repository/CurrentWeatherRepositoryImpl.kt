@@ -11,7 +11,7 @@ class CurrentWeatherRepositoryImpl @Inject constructor(
 ): CurrentWeatherRepository{
     override suspend fun getcurrentweather(city: String): ResultStatus<CurrentWeatherDataModel> {
         return when(val result =CurrentWeatherDataSource.getCurrentWeather(city)){
-            is ResultStatus.Failure -> ResultStatus.Failure(result.exception_message)
+            is ResultStatus.Failure -> ResultStatus.Failure(result.exception_message+"jjjjjjjj")
             is ResultStatus.Success -> ResultStatus.Success(result.data?.toCurrentWeatherDataModel() )
         }
 
