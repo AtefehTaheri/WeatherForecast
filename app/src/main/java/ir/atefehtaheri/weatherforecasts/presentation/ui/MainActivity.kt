@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import ir.atefehtaheri.weatherforecasts.BuildConfig
 import ir.atefehtaheri.weatherforecasts.feature.CurrentWeather.CurrentWeatherScreen
@@ -20,12 +21,19 @@ import ir.atefehtaheri.weatherforecasts.feature.CurrentWeather.CurrentWeatherVie
 import ir.atefehtaheri.weatherforecasts.feature.HourlyForecast.WeatherForecastScreen
 import ir.atefehtaheri.weatherforecasts.feature.HourlyForecast.WeatherForecastViewModel
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.WeatherForecastsTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val CurrentWeatherViewModel: CurrentWeatherViewModel by viewModels()
     private val WeatherForecastViewModel: WeatherForecastViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        runBlocking {
+            installSplashScreen()
+            delay(4000)
+        }
         setContent {
             WeatherForecastsTheme {
                 // A surface container using the 'background' color from the theme

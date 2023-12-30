@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Starting" parent="Theme.SplashScreen">
+        
+        <item name="windowSplashScreenBackground">@color/blue</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashlogo</item>
+        <item name="postSplashScreenTheme">@style/Theme.WeatherForecasts</item>
+
+    </style>
+
+</resources>

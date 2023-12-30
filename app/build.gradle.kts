@@ -117,4 +117,6 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 //    implementation("androidx.room:room-paging:2.6.1")
+
+    implementation ("androidx.core:core-splashscreen:1.1.0-alpha02")
 }
