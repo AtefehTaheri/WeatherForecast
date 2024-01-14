@@ -28,6 +28,7 @@ import kotlinx.coroutines.runBlocking
 class MainActivity : ComponentActivity() {
     private val CurrentWeatherViewModel: CurrentWeatherViewModel by viewModels()
     private val WeatherForecastViewModel: WeatherForecastViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         runBlocking {

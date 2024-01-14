@@ -105,6 +105,7 @@ dependencies {
 
 
 
+
 //    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
 //    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.1"
 //    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
@@ -119,4 +120,5 @@ dependencies {
 //    implementation("androidx.room:room-paging:2.6.1")
 
     implementation ("androidx.core:core-splashscreen:1.1.0-alpha02")
-}
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")

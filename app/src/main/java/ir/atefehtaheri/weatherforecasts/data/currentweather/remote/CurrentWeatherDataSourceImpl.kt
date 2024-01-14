@@ -13,7 +13,7 @@ class CurrentWeatherDataSourceImpl @Inject constructor(
         return when(val result = CurrentWeatherApi.getCurrentWeather(city)) {
             is NetworkResponse.Success ->ResultStatus.Success(result.body)
             is NetworkResponse.ApiError -> ResultStatus.Failure(result.body.message)
-            is NetworkResponse.NetworkError -> ResultStatus.Failure(result.error.message+"222222" ?: "Error")
+            is NetworkResponse.NetworkError -> ResultStatus.Failure(result.error.message ?: "Error")
             is NetworkResponse.UnknownError -> ResultStatus.Failure(result.error.message ?: "Error")
         }
     }
