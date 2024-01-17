@@ -16,7 +16,7 @@ class CurrentWeatherViewModel @Inject constructor(
     private val CurrentWeatherRepository: CurrentWeatherRepository
 ):ViewModel() {
 
-   private val _CurrentWeatherState = mutableStateOf(CurrentWeatherState())
+    private val _CurrentWeatherState = mutableStateOf(CurrentWeatherState())
        val CurrentWeatherState: State<CurrentWeatherState> = _CurrentWeatherState
 
 
