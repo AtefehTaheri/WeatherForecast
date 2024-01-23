@@ -1,10 +1,13 @@
 package ir.atefehtaheri.weatherforecasts.core.network.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import ir.atefehtaheri.weatherforecasts.BuildConfig
 import ir.atefehtaheri.weatherforecasts.core.network.adapters.NetworkResponseCallAdapterFactory
@@ -38,6 +41,11 @@ object NetworkModule {
         return NetworkResponseCallAdapterFactory.create()
     }
 
+
+    @Provides
+    fun provideContext(@ApplicationContext context: Context): Context {
+        return context
+    }
 }
 fun provideRetrofit(
     baseUrl: String,
