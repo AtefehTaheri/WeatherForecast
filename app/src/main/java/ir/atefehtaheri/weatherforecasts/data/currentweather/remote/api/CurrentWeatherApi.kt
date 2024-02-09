@@ -17,4 +17,13 @@ interface CurrentWeatherApi {
         @Query("units") units:String="metric",
     ): NetworkResponse<CurrentWeatherDto, ErrorResponse>
 
+
+    @GET("weather?")
+    suspend fun getCurrentWeather(
+        @Query("lat") lat:Double,
+        @Query("lon") lon:Double,
+        @Query("appid") key:String= BuildConfig.API_KEY,
+        @Query("units") units:String="metric",
+    ): NetworkResponse<CurrentWeatherDto, ErrorResponse>
+
 }

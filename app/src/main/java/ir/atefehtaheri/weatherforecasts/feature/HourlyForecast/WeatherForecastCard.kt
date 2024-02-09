@@ -1,26 +1,25 @@
 package ir.atefehtaheri.weatherforecasts.feature.HourlyForecast
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.repository.models.WeatherForecastDataModel
+import ir.atefehtaheri.weatherforecasts.feature.HourlyForecast.UiState.WeatherForecastState
 
 
 @Composable
-fun WeatherForecastScreen(viewModel: WeatherForecastViewModel) {
+fun WeatherForecastCard(WeatherForecastState: WeatherForecastState) {
 
     var items =
-        viewModel.WeatherForecastState.value.ListWeatherForecastDataModel?.items ?: emptyList()
-    Column {
-        LazyRow {
+        WeatherForecastState.ListWeatherForecastDataModel?.items ?: emptyList()
+    Column() {
+        LazyRow() {
             items(items) {
                 ListItems(it)
             }
         }
-        Text(text = viewModel.WeatherForecastState.value.error)
+        Text(text = WeatherForecastState.error)
     }
     
     

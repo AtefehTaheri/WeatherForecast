@@ -6,4 +6,6 @@ import ir.atefehtaheri.weatherforecasts.data.currentweather.repository.models.Cu
 interface CurrentWeatherRepository {
 
     suspend fun getcurrentweather(city: String): ResultStatus<CurrentWeatherDataModel>
+    suspend fun getcurrentweather(lat: Double,lon:Double): ResultStatus<CurrentWeatherDataModel>
+
 }

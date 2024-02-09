@@ -11,11 +11,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 interface CurrentWeatherRepositoryModule {
-
     @Singleton
     @Binds
     fun getCurrentWeatherRepository(
-        CurrentWeatherRepositoryImpl: CurrentWeatherRepositoryImpl
+        currentWeatherRepositoryImpl: CurrentWeatherRepositoryImpl
     ): CurrentWeatherRepository
 
 
