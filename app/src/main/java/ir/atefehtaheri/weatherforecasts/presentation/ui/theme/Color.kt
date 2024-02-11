@@ -14,4 +14,5 @@ val Yellow = Color(0xFFDDB130)
 
 val GradientC1 = Color(0xFF3E2D8F)
 val GradientC2 = Color(0XFF9D52AC)
+val LoadingBackground = Color(0xFF2E2268)
 

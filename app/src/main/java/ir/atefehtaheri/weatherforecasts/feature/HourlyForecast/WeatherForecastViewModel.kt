@@ -21,19 +21,55 @@ class WeatherForecastViewModel @Inject constructor(
     val WeatherForecastState: State<WeatherForecastState> = _WeatherForecastState
 
 
-    fun loadWeatherForecast(city: String) = viewModelScope.launch {
+    fun loadWeatherForecast(
+        city: String?,
+        latitude: Double?,
+        longitude: Double?,
+    ) {
+
+        viewModelScope.launch {
+            _WeatherForecastState.value = _WeatherForecastState.value.copy(true, null, null)
+            city?.let {
+                getWeatherForecast(city)
+
+            } ?: getWeatherForecast(latitude!!, longitude!!)
+        }
+    }
+
+
+
+
+    fun getWeatherForecast(city: String){
+
+        viewModelScope.launch {
 
         when (val result = WeatherForecastRepository.getListWeatherForecast(city)) {
             is ResultStatus.Failure -> {
                 _WeatherForecastState.value =
-                    _WeatherForecastState.value.copy(error = result.exception_message)
+                    _WeatherForecastState.value.copy(false,error = result.exception_message)
             }
             is ResultStatus.Success -> {
                 _WeatherForecastState.value =
-                _WeatherForecastState.value.copy(ListWeatherForecastDataModel = result.data)
+                _WeatherForecastState.value.copy(false,ListWeatherForecastDataModel = result.data,null)
         }}
 
-    }
+    }}
+    fun getWeatherForecast(lat:Double,lon:Double){
+Log.d("TAG",lat.toString())
+        Log.d("TAG",lon.toString())
 
+        viewModelScope.launch {
+
+            when (val result = WeatherForecastRepository.getListWeatherForecast(lat,lon)) {
+                is ResultStatus.Failure -> {
+                    _WeatherForecastState.value =
+                        _WeatherForecastState.value.copy(false,error = result.exception_message)
+                }
+                is ResultStatus.Success -> {
+                    _WeatherForecastState.value =
+                        _WeatherForecastState.value.copy(false,ListWeatherForecastDataModel = result.data,null)
+                }}
+
+        }}
 
 }

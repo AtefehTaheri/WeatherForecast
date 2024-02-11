@@ -5,10 +5,17 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +33,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ir.atefehtaheri.weatherforecasts.R
 import ir.atefehtaheri.weatherforecasts.feature.CurrentWeather.UiState.CurrentWeatherState
+import ir.atefehtaheri.weatherforecasts.presentation.ui.shimmerEffect
+//import ir.atefehtaheri.weatherforecasts.presentation.ui.shimmerEffect
+import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.LoadingBackground
+import kotlin.math.round
 
 @Composable
 fun CurrentWeatherCard(CurrentWeatherState: CurrentWeatherState, modifier: Modifier) {
@@ -45,7 +56,7 @@ fun CurrentWeatherCard(CurrentWeatherState: CurrentWeatherState, modifier: Modif
                     Modifier.size(180.dp), contentScale = ContentScale.Fit
                 )
                 Text(
-                    text = "${DataModel.temp}°C",
+                    text = "${round(DataModel.temp).toInt()}°C",
                     style = TextStyle(
                         fontSize = 60.sp,
                         fontFamily = FontFamily(Font(R.font.poppins_bold)),
@@ -67,6 +78,8 @@ fun CurrentWeatherCard(CurrentWeatherState: CurrentWeatherState, modifier: Modif
                 )
             }
         }
+
+
         AnimatedVisibility(
             visible = CurrentWeatherState.isLoading,
             enter = fadeIn(),
@@ -74,26 +87,36 @@ fun CurrentWeatherCard(CurrentWeatherState: CurrentWeatherState, modifier: Modif
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.5f))
-            ) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .size(50.dp)
-                        .align(Alignment.Center)
-                )
-            }
+                    .fillMaxWidth()
+                    .height(350.dp)
+                    .padding(10.dp)
+                    .shimmerEffect()
+            )
         }
-        CurrentWeatherState.error?.let { error ->
-            Text(
-                text = error,
-                color = Color.Red,
-                textAlign = TextAlign.Center,
 
-                )
+        CurrentWeatherState.error?.let { error ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(350.dp)
+                    .padding(10.dp).background(LoadingBackground),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement =Arrangement.Center
+            ) {
+                Text(
+                    text = error,
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontFamily = FontFamily(Font(R.font.poppins_medium)),
+                        color = Color.Red,
+                        textAlign = TextAlign.Center,
+                    )
+                    )
+            }
         }
     }
 }
+
 
 fun geticonimage(icon: String): Int {
     var iconDrawable = when (icon) {

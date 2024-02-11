@@ -139,4 +139,7 @@ dependencies {
 
     implementation ("com.google.android.gms:play-services-location:21.1.0")
 
+
+    implementation ("com.google.accompanist:accompanist-swiperefresh:0.27.0")
+
 }

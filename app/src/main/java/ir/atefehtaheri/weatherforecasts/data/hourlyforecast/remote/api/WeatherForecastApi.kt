@@ -16,4 +16,13 @@ interface WeatherForecastApi {
         @Query("appid") key: String = BuildConfig.API_KEY,
         @Query("units") units: String = "metric",
     ):NetworkResponse<List<Item>,ErrorResponse>
+
+
+    @GET("forecast?")
+    suspend fun getForecast(
+        @Query("lat") lat:Double,
+        @Query("lon") lon:Double,
+        @Query("appid") key: String = BuildConfig.API_KEY,
+        @Query("units") units: String = "metric",
+    ):NetworkResponse<List<Item>,ErrorResponse>
 }

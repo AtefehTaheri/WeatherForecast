@@ -46,12 +46,6 @@ class LocationManagerViewModel @Inject constructor(
         }
     }
 
-//    private fun setLocationDataStore(location: String) {
-//        viewModelScope.launch {
-//            LocationDataStore.setLocation(location)
-//        }
-//    }
-
     fun getCurrentLocation(context: Context) {
         viewModelScope.launch {
             _location.value = _location.value.copy(false)

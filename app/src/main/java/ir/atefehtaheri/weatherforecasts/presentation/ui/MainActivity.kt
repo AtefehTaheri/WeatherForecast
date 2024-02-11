@@ -61,7 +61,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-
 fun SplashScreen(navController: NavController, LocationManagerViewModel: LocationManagerViewModel) {
 
     LaunchedEffect(LocationManagerViewModel.location.value.isReady) {
@@ -83,12 +82,6 @@ fun SplashScreen(navController: NavController, LocationManagerViewModel: Locatio
             }
         }
     }
-    val gradient = Brush.verticalGradient(
-        colorStops = arrayOf(
-            0.5f to GradientC1,
-            1f to GradientC2
-        )
-    )
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -99,11 +92,7 @@ fun SplashScreen(navController: NavController, LocationManagerViewModel: Locatio
         Image(
             painter = painterResource(id = R.drawable.splashlogo),
             contentDescription = "",
-            Modifier.size(192.dp)
-            , contentScale = ContentScale.Fit
+            Modifier.size(192.dp), contentScale = ContentScale.Fit
         )
-
-
-
     }
 }

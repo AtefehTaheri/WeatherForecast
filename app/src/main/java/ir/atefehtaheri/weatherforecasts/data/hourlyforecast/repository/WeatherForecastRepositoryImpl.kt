@@ -21,4 +21,17 @@ class WeatherForecastRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun getListWeatherForecast(
+        lat: Double,
+        lon: Double
+    ): ResultStatus<ListWeatherForecastDataModel> {
+        return when (val result = WeatherForecastDataSource.getHourlyForecast(lat,lon)) {
+            is ResultStatus.Failure -> ResultStatus.Failure(result.exception_message)
+            is ResultStatus.Success -> {
+                val list = ListWeatherForecastDataModel(result.data!!.map { it.toWeatherForecastDataModel()})
+                ResultStatus.Success(list)
+            }
+        }
+    }
 }

@@ -5,6 +5,6 @@ import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.repository.models.Li
 data class WeatherForecastState(
     val isLoading: Boolean = false,
     val ListWeatherForecastDataModel: ListWeatherForecastDataModel? = null,
-    val error: String = ""
+    val error: String? = null
 
 )

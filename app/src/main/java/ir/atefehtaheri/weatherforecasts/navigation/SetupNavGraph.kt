@@ -23,7 +23,6 @@ fun SetupNavGraph(
         composable(route = Screen.Splash.route) {
             SplashScreen(navController, LocationManagerViewModel = LocationManagerViewModel)
         }
-
         composable(route = Screen.LocationManager.route) {
             LocationManagerScreen(navController,LocationManagerViewModel=LocationManagerViewModel)
         }
@@ -51,7 +50,7 @@ fun SetupNavGraph(
             val city = it.arguments?.getString("city")
             val latitude = it.arguments?.getString("latitude")?.toDouble()
             val longitude = it.arguments?.getString("longitude")?.toDouble()
-            WeatherScreen(city,latitude,longitude)
+            WeatherScreen(navController,city,latitude,longitude)
         }
     }
 }

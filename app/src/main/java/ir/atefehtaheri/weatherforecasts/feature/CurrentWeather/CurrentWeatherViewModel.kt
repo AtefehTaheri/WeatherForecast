@@ -58,9 +58,7 @@ class CurrentWeatherViewModel @Inject constructor(
                     _CurrentWeatherState.value =
                         _CurrentWeatherState.value.copy(
                             false,
-                            CurrentWeatherDataModel = result.data,
-                            null
-                        )
+                            CurrentWeatherDataModel = result.data, null)
                     setLocationDataStore(result.data!!.location)
                 }
             }

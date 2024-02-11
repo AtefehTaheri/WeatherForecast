@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -47,14 +48,19 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import ir.atefehtaheri.weatherforecasts.R
 import ir.atefehtaheri.weatherforecasts.navigation.Screen
 import ir.atefehtaheri.weatherforecasts.navigation.Screen.LocationManager.navigateToWeatherScreen
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.GradientC1
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.GradientC2
+import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.WeatherForecastsTheme
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.Yellow
 
 
@@ -107,12 +113,11 @@ fun LocationManagerScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(gradient)
     ) {
         Column(
             modifier = modifier
-                .fillMaxSize()
-                .background(gradient),
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
 
             ) {
@@ -154,7 +159,7 @@ fun LocationManagerScreen(
                 }, textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(30.dp))
-
+            Log.d("TAG", "QQQQQQQQ")
             ElevatedButton(
                 onClick = {
 
@@ -185,7 +190,7 @@ fun LocationManagerScreen(
                     )
                 )
             }
-
+            Log.d("TAG","ddddddd")
             TextButton(
                 onClick = {
                 }
@@ -203,8 +208,9 @@ fun LocationManagerScreen(
                 )
             }
         }
+
         AnimatedVisibility(
-            visible =!LocationManagerViewModel.location.value.isReady,
+            visible = !LocationManagerViewModel.location.value.isReady,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -241,9 +247,11 @@ fun LocationManagerScreen(
                     LocationManagerViewModel.location.value.latitude.toString(),
                     LocationManagerViewModel.location.value.longitude.toString()
                 )
-            ){popUpTo(Screen.LocationManager.route) {
-                inclusive = true
-            }}
+            ) {
+                popUpTo(Screen.LocationManager.route) {
+                    inclusive = true
+                }
+            }
         }
     }
 }
