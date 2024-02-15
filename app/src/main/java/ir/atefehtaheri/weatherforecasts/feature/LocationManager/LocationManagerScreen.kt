@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
-import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -37,7 +36,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
@@ -48,19 +46,15 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import ir.atefehtaheri.weatherforecasts.R
 import ir.atefehtaheri.weatherforecasts.navigation.Screen
 import ir.atefehtaheri.weatherforecasts.navigation.Screen.LocationManager.navigateToWeatherScreen
+import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.Blue
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.GradientC1
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.GradientC2
-import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.WeatherForecastsTheme
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.Yellow
 
 
@@ -71,7 +65,6 @@ fun LocationManagerScreen(
     LocationManagerViewModel: LocationManagerViewModel
 ) {
     var showDialog by remember { mutableStateOf(false) }
-    var showD by remember { mutableStateOf(false) }
 
     val ctx = LocalContext.current
 
@@ -159,7 +152,7 @@ fun LocationManagerScreen(
                 }, textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(30.dp))
-            Log.d("TAG", "QQQQQQQQ")
+
             ElevatedButton(
                 onClick = {
 
@@ -177,7 +170,7 @@ fun LocationManagerScreen(
                 elevation = ButtonDefaults.buttonElevation(defaultElevation = 10.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Yellow,
-                    contentColor = colorResource(R.color.blue)
+                    contentColor = Blue
 
                 )
             ) {
@@ -190,9 +183,11 @@ fun LocationManagerScreen(
                     )
                 )
             }
-            Log.d("TAG","ddddddd")
             TextButton(
                 onClick = {
+                    navController.navigate(Screen.SearchCity.route){
+                        launchSingleTop = true
+                    }
                 }
             ) {
                 Text(
@@ -235,20 +230,19 @@ fun LocationManagerScreen(
 
     }
     LaunchedEffect(
-        key1 = LocationManagerViewModel.location.value.city,
-        key2 = LocationManagerViewModel.location.value.latitude
+        key1 = LocationManagerViewModel.location.value.latitude
     ) {
-        if (LocationManagerViewModel.location.value.city != null ||
+        if (
             LocationManagerViewModel.location.value.latitude != null
         ) {
             navController.navigate(
                 navigateToWeatherScreen(
-                    LocationManagerViewModel.location.value.city,
-                    LocationManagerViewModel.location.value.latitude.toString(),
-                    LocationManagerViewModel.location.value.longitude.toString()
+                    LocationManagerViewModel.location.value.latitude!!,
+                    LocationManagerViewModel.location.value.longitude!!
                 )
             ) {
-                popUpTo(Screen.LocationManager.route) {
+                launchSingleTop = true
+                popUpTo(0) {
                     inclusive = true
                 }
             }
@@ -256,7 +250,7 @@ fun LocationManagerScreen(
     }
 }
 
-fun openAppSettings(context: Context) {
+private fun openAppSettings(context: Context) {
     val intent = Intent(
         Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
         Uri.fromParts("package", context.packageName, null)

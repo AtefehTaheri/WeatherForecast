@@ -9,15 +9,7 @@ import javax.inject.Inject
 
 class CurrentWeatherDataSourceImpl @Inject constructor(
     private val CurrentWeatherApi: CurrentWeatherApi
-):CurrentWeatherDataSource {
-    override suspend fun getCurrentWeather(city: String): ResultStatus<CurrentWeatherDto> {
-        return when(val result = CurrentWeatherApi.getCurrentWeather(city)) {
-            is NetworkResponse.Success ->ResultStatus.Success(result.body)
-            is NetworkResponse.ApiError -> ResultStatus.Failure(result.body.message)
-            is NetworkResponse.NetworkError -> ResultStatus.Failure(result.error.message ?: "NetworkError")
-            is NetworkResponse.UnknownError -> ResultStatus.Failure(result.error.message ?: "UnknownError")
-        }
-    }
+) : CurrentWeatherDataSource {
 
 
     override suspend fun getCurrentWeather(
@@ -25,11 +17,16 @@ class CurrentWeatherDataSourceImpl @Inject constructor(
         lon: Double
     ): ResultStatus<CurrentWeatherDto> {
 
-        return when(val result = CurrentWeatherApi.getCurrentWeather(lat,lon)) {
-            is NetworkResponse.Success ->ResultStatus.Success(result.body)
+        return when (val result = CurrentWeatherApi.getCurrentWeather(lat, lon)) {
+            is NetworkResponse.Success -> ResultStatus.Success(result.body)
             is NetworkResponse.ApiError -> ResultStatus.Failure(result.body.message)
-            is NetworkResponse.NetworkError -> ResultStatus.Failure(result.error.message ?: "NetworkError")
-            is NetworkResponse.UnknownError -> ResultStatus.Failure(result.error.message ?: "UnknownError")
+            is NetworkResponse.NetworkError -> ResultStatus.Failure(
+                result.error.message ?: "NetworkError"
+            )
+
+            is NetworkResponse.UnknownError -> ResultStatus.Failure(
+                result.error.message ?: "UnknownError"
+            )
         }
     }
 }

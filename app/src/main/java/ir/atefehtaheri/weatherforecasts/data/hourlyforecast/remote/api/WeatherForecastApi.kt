@@ -10,15 +10,9 @@ import retrofit2.http.Query
 
 interface WeatherForecastApi {
 
-    @GET("forecast?")
-    suspend fun getForecast(
-        @Query("q") city: String,
-        @Query("appid") key: String = BuildConfig.API_KEY,
-        @Query("units") units: String = "metric",
-    ):NetworkResponse<List<Item>,ErrorResponse>
 
 
-    @GET("forecast?")
+    @GET("/data/2.5/forecast?")
     suspend fun getForecast(
         @Query("lat") lat:Double,
         @Query("lon") lon:Double,

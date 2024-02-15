@@ -5,7 +5,6 @@ import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.repository.models.Li
 
 interface WeatherForecastRepository {
 
-    suspend fun getListWeatherForecast(city:String):ResultStatus<ListWeatherForecastDataModel>
     suspend fun getListWeatherForecast(lat:Double,lon:Double):ResultStatus<ListWeatherForecastDataModel>
 
 

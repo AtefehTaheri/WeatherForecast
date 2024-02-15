@@ -10,15 +10,8 @@ import retrofit2.http.Query
 
 interface CurrentWeatherApi {
 
-    @GET("weather?")
-    suspend fun getCurrentWeather(
-        @Query("q") city:String,
-        @Query("appid") key:String= BuildConfig.API_KEY,
-        @Query("units") units:String="metric",
-    ): NetworkResponse<CurrentWeatherDto, ErrorResponse>
 
-
-    @GET("weather?")
+    @GET("/data/2.5/weather?")
     suspend fun getCurrentWeather(
         @Query("lat") lat:Double,
         @Query("lon") lon:Double,

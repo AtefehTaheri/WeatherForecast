@@ -9,15 +9,6 @@ import javax.inject.Inject
 class WeatherForecastDataSourceImpl @Inject constructor(
     private val WeatherForecastApi: WeatherForecastApi
 ) :WeatherForecastDataSource {
-    override suspend fun getHourlyForecast(city: String): ResultStatus<List<Item>> {
-
-        return when(val result =WeatherForecastApi.getForecast(city)){
-            is NetworkResponse.Success -> ResultStatus.Success(result.body)
-            is NetworkResponse.ApiError -> ResultStatus.Failure(result.body.message)
-            is NetworkResponse.NetworkError -> ResultStatus.Failure(result.error.message ?: "Error")
-            is NetworkResponse.UnknownError -> ResultStatus.Failure(result.error.message ?: "Error")
-        }
-    }
 
     override suspend fun getHourlyForecast(lat: Double, lon: Double): ResultStatus<List<Item>> {
         return when(val result =WeatherForecastApi.getForecast(lat,lon)){

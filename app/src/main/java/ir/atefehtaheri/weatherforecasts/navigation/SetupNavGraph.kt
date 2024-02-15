@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import ir.atefehtaheri.weatherforecasts.feature.LocationManager.LocationManagerScreen
 import ir.atefehtaheri.weatherforecasts.feature.LocationManager.LocationManagerViewModel
+import ir.atefehtaheri.weatherforecasts.feature.SearchCity.SearchCityScreen
 import ir.atefehtaheri.weatherforecasts.presentation.ui.WeatherScreen
 import ir.atefehtaheri.weatherforecasts.presentation.ui.SplashScreen
 
@@ -30,27 +31,22 @@ fun SetupNavGraph(
         composable(
             route = Screen.Weather.route,
             arguments = listOf(
-                navArgument("city") {
-                    type = NavType.StringType
-                    defaultValue = null
-                    nullable=true
-                },
                 navArgument("latitude") {
                     type = NavType.StringType
-                    defaultValue = null
-                    nullable=true
+                    defaultValue = ""
                 },
                 navArgument("longitude") {
                     type = NavType.StringType
-                    defaultValue = null
-                    nullable=true
+                    defaultValue = ""
                 }
             )
         ) {
-            val city = it.arguments?.getString("city")
-            val latitude = it.arguments?.getString("latitude")?.toDouble()
-            val longitude = it.arguments?.getString("longitude")?.toDouble()
-            WeatherScreen(navController,city,latitude,longitude)
+            val latitude = it.arguments!!.getString("latitude")!!.toDouble()
+            val longitude = it.arguments!!.getString("longitude")!!.toDouble()
+            WeatherScreen(navController,latitude,longitude)
+        }
+        composable(route = Screen.SearchCity.route) {
+            SearchCityScreen(navController)
         }
     }
 }

@@ -17,6 +17,7 @@ class WeatherForecastConverter:Converter<ResponseBody,List<Item>> {
 
         val customResponseJson: JsonArray = jsonObject.getAsJsonArray("list")
         val listType: Type = object : TypeToken<List<Item>>() {}.type
+
         return Gson().fromJson(customResponseJson, listType)
     }
 }

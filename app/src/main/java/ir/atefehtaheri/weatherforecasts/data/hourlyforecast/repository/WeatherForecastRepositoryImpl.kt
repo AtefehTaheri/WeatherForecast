@@ -10,17 +10,6 @@ import javax.inject.Inject
 class WeatherForecastRepositoryImpl @Inject constructor(
     private val WeatherForecastDataSource: WeatherForecastDataSource
 ) : WeatherForecastRepository {
-    override suspend fun getListWeatherForecast(city: String):
-            ResultStatus<ListWeatherForecastDataModel> {
-
-        return when (val result = WeatherForecastDataSource.getHourlyForecast(city)) {
-            is ResultStatus.Failure -> ResultStatus.Failure(result.exception_message)
-            is ResultStatus.Success -> {
-                val list = ListWeatherForecastDataModel(result.data!!.map { it.toWeatherForecastDataModel()})
-                ResultStatus.Success(list)
-            }
-        }
-    }
 
     override suspend fun getListWeatherForecast(
         lat: Double,

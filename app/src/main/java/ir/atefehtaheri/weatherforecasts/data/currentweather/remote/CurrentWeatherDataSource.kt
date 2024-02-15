@@ -5,8 +5,6 @@ import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.Curren
 
 interface CurrentWeatherDataSource {
 
-    suspend fun getCurrentWeather(city:String):ResultStatus<CurrentWeatherDto>
-
     suspend fun getCurrentWeather(lat:Double,lon:Double):ResultStatus<CurrentWeatherDto>
 
 }

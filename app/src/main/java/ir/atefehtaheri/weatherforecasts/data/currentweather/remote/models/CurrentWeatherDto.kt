@@ -24,6 +24,8 @@ fun CurrentWeatherDto.toCurrentWeatherDataModel(): CurrentWeatherDataModel {
         temp_min = main.temp_min,
         img=weather[0].icon,
         location = name,
-        description = weather[0].description
+        description = weather[0].description,
+        longitude=coord.lon,
+        latitude=coord.lat,
     )
 }

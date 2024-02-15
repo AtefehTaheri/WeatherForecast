@@ -6,5 +6,8 @@ data class CurrentWeatherDataModel(
     val temp_min: Double,
     val img : String,
     val location: String,
-    val description: String
+    val description: String,
+    val latitude:Double,
+    val longitude :Double
+
 )

@@ -1,9 +1,10 @@
 package ir.atefehtaheri.weatherforecasts.data.LocationManager
 
 import android.content.Context
+import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import ir.atefehtaheri.weatherforecasts.data.LocationManager.model.Location
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
@@ -15,14 +16,17 @@ val Context.dataStore by preferencesDataStore(
 
 class LocationDataStoreImpl @Inject constructor(private val context: Context) : LocationDataStore {
 
-    val city = stringPreferencesKey("City")
-    override suspend fun getLocation(): String? {
-        return context.dataStore.data.first()[city]
+    val lat = doublePreferencesKey("lat")
+    val lon = doublePreferencesKey("lon")
+
+    override suspend fun getLocation(): Location {
+        return Location(context.dataStore.data.first()[lat],context.dataStore.data.first()[lon])
     }
 
-    override suspend fun setLocation(location: String) {
+    override suspend fun setLocation(latitude:Double,longitude:Double) {
         context.dataStore.edit {
-            it[city] = location
+            it[lat] = latitude
+            it[lon] = longitude
         }
 
     }

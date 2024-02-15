@@ -16,10 +16,7 @@ import ir.atefehtaheri.weatherforecasts.BuildConfig
 import ir.atefehtaheri.weatherforecasts.core.network.adapters.NetworkResponseCallAdapterFactory
 
 import ir.atefehtaheri.weatherforecasts.core.network.converter.WeatherForecastConverterFactory
-import ir.atefehtaheri.weatherforecasts.domain.usecase.CheckGps
-import ir.atefehtaheri.weatherforecasts.domain.usecase.CheckPermission
-import ir.atefehtaheri.weatherforecasts.domain.usecase.EnableGps
-import ir.atefehtaheri.weatherforecasts.domain.usecase.PermissionUseCase
+
 
 import retrofit2.CallAdapter
 import retrofit2.Retrofit

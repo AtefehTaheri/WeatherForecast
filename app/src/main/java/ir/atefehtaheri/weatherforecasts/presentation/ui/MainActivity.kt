@@ -1,6 +1,7 @@
 package ir.atefehtaheri.weatherforecasts.presentation.ui
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,19 +10,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalMapOf
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -33,8 +28,7 @@ import ir.atefehtaheri.weatherforecasts.feature.LocationManager.LocationManagerV
 import ir.atefehtaheri.weatherforecasts.navigation.Screen
 import ir.atefehtaheri.weatherforecasts.navigation.Screen.LocationManager.navigateToWeatherScreen
 import ir.atefehtaheri.weatherforecasts.navigation.SetupNavGraph
-import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.GradientC1
-import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.GradientC2
+import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.Blue
 import ir.atefehtaheri.weatherforecasts.presentation.ui.theme.WeatherForecastsTheme
 import kotlinx.coroutines.delay
 
@@ -44,6 +38,7 @@ class MainActivity : ComponentActivity() {
 
     lateinit var navController: NavHostController
 
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         actionBar?.hide()
@@ -63,19 +58,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun SplashScreen(navController: NavController, LocationManagerViewModel: LocationManagerViewModel) {
 
+
     LaunchedEffect(LocationManagerViewModel.location.value.isReady) {
         if (LocationManagerViewModel.location.value.isReady) {
             delay(2000)
-            LocationManagerViewModel.location.value.city?.let {
+            LocationManagerViewModel.location.value.latitude?.let {
 
                 navController.navigate(
-                    navigateToWeatherScreen(LocationManagerViewModel.location.value.city)
+                    navigateToWeatherScreen(latitude=LocationManagerViewModel.location.value.latitude!!,longitude=LocationManagerViewModel.location.value.longitude!!)
                 ) {
-                    popUpTo(Screen.Splash.route) {
+                    launchSingleTop = true
+                    popUpTo(0) {
                         inclusive = true
                     }
                 }
             } ?: navController.navigate(Screen.LocationManager.route) {
+                launchSingleTop = true
                 popUpTo(Screen.Splash.route) {
                     inclusive = true
                 }
@@ -85,7 +83,7 @@ fun SplashScreen(navController: NavController, LocationManagerViewModel: Locatio
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(R.color.blue)),
+            .background(Blue),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
