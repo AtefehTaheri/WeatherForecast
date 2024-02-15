@@ -1,9 +1,6 @@
 package ir.atefehtaheri.weatherforecasts.core.network.adapters
 
-import android.util.Log
 import ir.atefehtaheri.weatherforecasts.core.network.NetworkResponse
-import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.CurrentWeatherDto
-
 import okhttp3.Request
 import okhttp3.ResponseBody
 import okio.Timeout

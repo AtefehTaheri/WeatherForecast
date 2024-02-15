@@ -6,7 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ir.atefehtaheri.weatherforecasts.core.network.di.createApiService
 import ir.atefehtaheri.weatherforecasts.data.SearchCity.remote.api.SearchCityApi
-import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote.api.WeatherForecastApi
 import retrofit2.Retrofit
 
 @Module

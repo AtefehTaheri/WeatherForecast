@@ -1,6 +1,5 @@
 package ir.atefehtaheri.weatherforecasts.data.SearchCity.remote
 
-import android.util.Log
 import ir.atefehtaheri.weatherforecasts.core.common.models.ResultStatus
 import ir.atefehtaheri.weatherforecasts.core.network.NetworkResponse
 import ir.atefehtaheri.weatherforecasts.data.SearchCity.remote.api.SearchCityApi

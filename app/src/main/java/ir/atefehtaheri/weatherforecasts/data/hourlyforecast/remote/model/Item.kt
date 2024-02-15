@@ -1,6 +1,5 @@
 package ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote.model
 
-import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.repository.models.ListWeatherForecastDataModel
 import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.repository.models.WeatherForecastDataModel
 
 data class Item(

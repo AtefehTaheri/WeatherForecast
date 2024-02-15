@@ -10,8 +10,8 @@ import androidx.navigation.navArgument
 import ir.atefehtaheri.weatherforecasts.feature.LocationManager.LocationManagerScreen
 import ir.atefehtaheri.weatherforecasts.feature.LocationManager.LocationManagerViewModel
 import ir.atefehtaheri.weatherforecasts.feature.SearchCity.SearchCityScreen
-import ir.atefehtaheri.weatherforecasts.presentation.ui.WeatherScreen
 import ir.atefehtaheri.weatherforecasts.presentation.ui.SplashScreen
+import ir.atefehtaheri.weatherforecasts.presentation.ui.WeatherScreen
 
 @Composable
 fun SetupNavGraph(

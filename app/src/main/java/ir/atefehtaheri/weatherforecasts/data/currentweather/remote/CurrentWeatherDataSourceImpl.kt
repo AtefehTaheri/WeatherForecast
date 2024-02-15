@@ -1,10 +1,9 @@
 package ir.atefehtaheri.weatherforecasts.data.currentweather.remote
 
-import android.util.Log
 import ir.atefehtaheri.weatherforecasts.core.common.models.ResultStatus
 import ir.atefehtaheri.weatherforecasts.core.network.NetworkResponse
-import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.CurrentWeatherDto
 import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.api.CurrentWeatherApi
+import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.CurrentWeatherDto
 import javax.inject.Inject
 
 class CurrentWeatherDataSourceImpl @Inject constructor(

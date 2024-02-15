@@ -1,6 +1,5 @@
 package ir.atefehtaheri.weatherforecasts.core.network.converter
 
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject

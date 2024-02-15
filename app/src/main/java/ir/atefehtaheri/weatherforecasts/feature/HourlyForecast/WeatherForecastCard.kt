@@ -92,7 +92,7 @@ fun WeatherForecastCard(
                                     .padding(top = 7.dp),
                                 textAlign = TextAlign.Center,
                                 style = TextStyle(
-                                    fontSize = 25.sp,
+                                    fontSize = 20.sp,
                                     fontFamily = FontFamily(Font(R.font.poppins_bold)),
                                     color = Color.White
                                 )

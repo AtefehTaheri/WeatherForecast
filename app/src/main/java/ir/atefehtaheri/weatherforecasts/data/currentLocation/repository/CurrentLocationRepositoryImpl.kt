@@ -1,7 +1,6 @@
 package ir.atefehtaheri.weatherforecasts.data.currentLocation.repository
 
 import android.annotation.SuppressLint
-import android.app.Application
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource

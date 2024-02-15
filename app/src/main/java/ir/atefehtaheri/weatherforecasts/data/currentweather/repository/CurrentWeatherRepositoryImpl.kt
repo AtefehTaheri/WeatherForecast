@@ -1,8 +1,8 @@
 package ir.atefehtaheri.weatherforecasts.data.currentweather.repository
 
 import ir.atefehtaheri.weatherforecasts.core.common.models.ResultStatus
-import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.toCurrentWeatherDataModel
 import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.CurrentWeatherDataSource
+import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.toCurrentWeatherDataModel
 import ir.atefehtaheri.weatherforecasts.data.currentweather.repository.models.CurrentWeatherDataModel
 import javax.inject.Inject
 

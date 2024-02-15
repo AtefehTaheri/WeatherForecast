@@ -67,7 +67,7 @@ fun SuggestListItemScreen(
 
             Text(
                 text = SuggestedListItem.name, style = TextStyle(
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     lineHeight = 25.sp,
                     fontFamily = FontFamily(Font(R.font.poppins_light)),
                     fontWeight = FontWeight(600),

@@ -47,12 +47,12 @@ fun CurrentWeatherCard(CurrentWeatherState: CurrentWeatherState, modifier: Modif
                 Image(
                     painter = painterResource(id = geticonimage(DataModel.img)),
                     contentDescription = "",
-                    Modifier.size(180.dp), contentScale = ContentScale.Fit
+                    Modifier.size(180.dp).padding(top=40.dp), contentScale = ContentScale.Fit
                 )
                 Text(
                     text = "${round(DataModel.temp).toInt()}°C",
                     style = TextStyle(
-                        fontSize = 60.sp,
+                        fontSize = 50.sp,
                         fontFamily = FontFamily(Font(R.font.poppins_bold)),
                         color = Color.White,
                         textAlign = TextAlign.Center,
@@ -61,7 +61,7 @@ fun CurrentWeatherCard(CurrentWeatherState: CurrentWeatherState, modifier: Modif
                 Text(
                     text = "${DataModel.description}\nMax: ${DataModel.temp_max}°C   Min:${DataModel.temp_min}°C",
                     style = TextStyle(
-                        fontSize = 24.sp,
+                        fontSize = 20.sp,
                         lineHeight = 29.71.sp,
                         fontFamily = FontFamily(Font(R.font.poppins_bold)),
                         fontWeight = FontWeight(500),

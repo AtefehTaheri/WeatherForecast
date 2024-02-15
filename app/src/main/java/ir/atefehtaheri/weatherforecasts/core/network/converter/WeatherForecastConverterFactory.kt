@@ -1,6 +1,5 @@
 package ir.atefehtaheri.weatherforecasts.core.network.converter
 
-import android.util.Log
 import ir.atefehtaheri.weatherforecasts.data.hourlyforecast.remote.model.Item
 import okhttp3.ResponseBody
 import retrofit2.Converter

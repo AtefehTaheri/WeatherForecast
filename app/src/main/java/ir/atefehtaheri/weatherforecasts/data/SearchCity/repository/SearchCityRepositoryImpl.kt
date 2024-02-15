@@ -1,10 +1,8 @@
 package ir.atefehtaheri.weatherforecasts.data.SearchCity.repository
 
-import android.util.Log
 import ir.atefehtaheri.weatherforecasts.core.common.models.ResultStatus
 import ir.atefehtaheri.weatherforecasts.data.SearchCity.remote.SearchCityDataSource
 import ir.atefehtaheri.weatherforecasts.data.SearchCity.remote.models.SuggestedListDto
-import ir.atefehtaheri.weatherforecasts.data.currentweather.remote.models.toCurrentWeatherDataModel
 import javax.inject.Inject
 
 class SearchCityRepositoryImpl @Inject constructor(
