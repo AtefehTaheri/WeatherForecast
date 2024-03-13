@@ -50,9 +50,9 @@ To get started with the WeatherApp, follow these steps:
    git clone https://github.com/your-username/WeatherApp-ComposeUI.git
 ```
 2- Open the project in Android Studio.<br>
-3- Get [Open Weather Map Api Key](https://openweathermap.org/api) and add to local.properties with "API.KEY" tag
+3- Get [Open Weather Map Api Key](https://openweathermap.org/api) and add to local.properties with "API_KEY" tag
 ```
-   API.KEY="<INSERT_YOUR_API_KEY>"
+   API_KEY="<INSERT_YOUR_API_KEY>"
 ```
 4- Build and run the application on your emulator or device.
 
